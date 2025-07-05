@@ -2,6 +2,12 @@
 
 > An AI-powered web application to identify and explain possible interactions between medications and foods, using trusted medical sources with Gemini AI as a fallback.
 
+## 🌐 Live Demo
+
+**Try the application live:** [https://drugfood-interaction-checker.streamlit.app/](https://drugfood-interaction-checker.streamlit.app/)
+
+---
+
 ## 🎯 Overview
 
 This application helps users check for potential drug-food interactions by:

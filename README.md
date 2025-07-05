@@ -76,7 +76,6 @@ drug_food_interaction_checker_final/
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/SowmyaKurapati26/drug_food_interaction_checker.git
-   cd drug_food_interaction_checker_final
    ```
 
 2. **Install dependencies:**
@@ -161,3 +160,4 @@ This project is for educational and informational purposes only. It is not inten
 - **BeautifulSoup**: Web scraping library
 
 ---
+

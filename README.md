@@ -161,3 +161,8 @@ This project is for educational and informational purposes only. It is not inten
 
 ---
 
+## 📫 Contact
+
+For questions, contributions, or collaboration, feel free to reach out:
+
+**📧 Email:** kurapatisowmya1@gmail.com

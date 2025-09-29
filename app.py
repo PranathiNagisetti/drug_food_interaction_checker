@@ -4,8 +4,8 @@ from core import check_interaction
 from rxnorm import get_generic_name_quick
 import logging
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
+
+
 
 # Page configuration
 st.set_page_config(
@@ -14,23 +14,96 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+if "theme" not in st.session_state:
+    st.session_state.theme = "Light"
 
-# Custom CSS for better styling
-st.markdown("""
-<style>
+# Function to toggle theme
+def toggle_theme():
+    st.session_state.theme = "Dark" if st.session_state.theme == "Light" else "Light"
+
+# Top bar: Title + theme icon
+col_left, col_right = st.columns([9, 1])
+with col_left:
+    st.markdown(
+        '<h1 class="main-header" >💊 Drug–Food Interaction Checker</h1>',
+        unsafe_allow_html=True
+    )
+with col_right:
+    # Theme toggle icon button
+    st.button(
+        "🌙" if st.session_state.theme == "Light" else "☀️",
+        on_click=toggle_theme
+    )
+
+# Apply CSS based on theme
+if st.session_state.theme == "Dark":
+    with open("styles/dark.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+    # Fix Streamlit header gap background
+    st.markdown("""
+        <style>
+        header.stAppHeader {
+            background: #000000 !important;   /* or match your dark background */
+        }
+        .st-emotion-cache-1ffuo7c {
+            background: #000000 !important;   /* override white background */
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+else:
+    with open("styles/light.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+# Configure logging
+# Apply CSS based on theme
+if st.session_state.theme == "Dark":
+    with open("styles/dark.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    # Make placeholder text white in dark mode
+    st.markdown("""
+        <style>
+        ::placeholder {
+            color: #ffffff !important;
+            opacity: 1 !important;
+        }
+        input, textarea {
+            color: #ffffff !important;
+            background-color: #333333 !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+else:
+    with open("styles/light.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    st.markdown("""
+        <style>
+        ::placeholder {
+            color: #666666 !important;
+            opacity: 1 !important;
+        }
+        input, textarea {
+            color: #000000 !important;
+            background-color: #ffffff !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <style>
     .main-header {
         font-size: 3rem;
         font-weight: bold;
         color: #1f77b4;
         text-align: center;
-        margin-bottom: 2rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.2rem;
     }
     .sub-header {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         color: #666;
         text-align: center;
-        margin-bottom: 2rem;
-    }
+        margin-top: -0.5rem;
+        margin-bottom: 0.5rem;}
     .info-box {
         background-color: #f0f2f6;
         padding: 1rem;
@@ -59,14 +132,25 @@ st.markdown("""
         border-left: 4px solid #dc3545;
         margin: 1rem 0;
     }
+    
+
+    /* Optional: Reduce padding between components */
+    .element-container {
+        margin-top: -0.5rem !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
+
+logging.basicConfig(level=logging.INFO)
 def main():
     # Header
-    st.markdown('<h1 class="main-header">💊 Drug–Food Interaction Checker</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="sub-header">AI-powered assistant to identify potential interactions between medications and foods</p>', unsafe_allow_html=True)
-    
+    #st.markdown('<h1 class="main-header">💊 Drug–Food Interaction Checker</h1>', unsafe_allow_html=True)
+    st.markdown(
+    '<p class="sub-header" style="text-align: center; width: 100%; margin-top: 0; margin-bottom: 0.5rem;">AI-powered assistant to identify potential interactions between medications and foods</p>',
+    unsafe_allow_html=True
+)
+
     # Sidebar with information
     with st.sidebar:
         st.header("ℹ️ About This Tool")

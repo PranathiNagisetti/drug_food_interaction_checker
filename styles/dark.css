@@ -1,0 +1,79 @@
+/* Dark mode background for main app */
+.stApp {
+    background-color: #121212 !important; /* deep dark */
+    color: #ffffff !important;
+}
+
+/* Sidebar */
+[data-testid="stSidebar"] {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+}
+
+
+/* Button */
+.stButton button {
+    background-color: #ff4444 !important;
+    color: #ffffff !important;
+    border-radius: 8px;
+    border: none;
+    padding: 0.6rem 1.2rem;
+}
+
+
+/* Sidebar text */
+[data-testid="stSidebar"], [data-testid="stSidebar"] * {
+    color: #ffffff !important;
+}
+
+/* Labels for inputs */
+.stTextInput label, .stTextArea label {
+    color: #ffffff !important;
+}
+
+/* Metric numbers */
+[data-testid="stMetricValue"], [data-testid="stMetricLabel"] {
+    color: #ffffff !important;
+}
+
+
+
+.main-header {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #1f77b4;  
+    margin-bottom: -5rem;
+}
+
+.sub-header {
+    font-size: 1.25rem;
+    color: #cccccc;
+    text-align: center;
+    margin-top: -2.9rem;
+    margin-bottom: 2rem;
+}
+
+/* Remove top padding and white background from header containers */
+header.stAppHeader {
+    background-color: #121212 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 0 !important;
+}
+
+#root > div > div {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+/* Streamlit adds background containers with emotion CSS — these can cause white gaps */
+.st-emotion-cache-1ffuo7c,
+.st-emotion-cache-1dp5vir,
+.st-emotion-cache-18ni7ap,
+.st-emotion-cache-6qob1r {
+    background-color: #121212 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+
